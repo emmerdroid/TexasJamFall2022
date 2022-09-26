@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5652729084498310136}
   - component: {fileID: 336525420380295948}
   m_Layer: 0
-  m_Name: PawNote
+  m_Name: LeftPaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,8 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f291e8a27d7092f42bc205e27798085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBePressed: 0
-  keyToPress: 324
+  assignedTime: 0
+  sR: {fileID: 0}
+  inVis: {fileID: 21300000, guid: 6182299ed34e4114abf9cf3d2476dd6a, type: 3}
 --- !u!212 &336525420380295948
 SpriteRenderer:
   m_ObjectHideFlags: 0

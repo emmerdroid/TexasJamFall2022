@@ -7,17 +7,20 @@ public class InvertCreator : MonoBehaviour
 
     public float maxTimer;
     public float maxSize;
+    public float currentSize;
+    public int startTime;
 
-    CircleCollider2D circCol;
+    public RectTransform rT;
     bool delayEnd;
     float timer;
     // Start is called before the first frame update
     void Start()
     {
-        circCol = GetComponent<CircleCollider2D>();
+        rT = GetComponent<RectTransform>();
         StartCoroutine(startCount());
         delayEnd = false;
         timer = 0;
+        currentSize = 1;
     }
 
     // Update is called once per frame
@@ -25,10 +28,11 @@ public class InvertCreator : MonoBehaviour
     {
         if(delayEnd)
         {
-            if (timer > maxTimer && circCol.radius <= maxSize)
+            if (timer > maxTimer && rT.localScale.x <= maxSize)
             {
                 timer = 0;
-                circCol.radius += 5f;
+                currentSize += 1.5f;
+                rT.localScale = new Vector3 (currentSize, currentSize, currentSize);
             }
 
             else
@@ -36,11 +40,18 @@ public class InvertCreator : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
+
+        if(rT.localScale.x == maxSize)
+        {
+            timer = 0;
+            currentSize = 1.5f;
+            rT.localScale = new Vector3(currentSize, currentSize, currentSize);
+        }
     }
 
     IEnumerator startCount()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(startTime);
         delayEnd = true;
 
     }
